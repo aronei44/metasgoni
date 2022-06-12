@@ -1,4 +1,17 @@
-.main::before {
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+#pros::before {
     content: "";
     display: block;
     position: absolute;
@@ -9,4 +22,8 @@
     background-size: contain;
     background-position: center;
     opacity: 0.1;
+}
+
+#pros {
+    position: relative;
 }
