@@ -1,6 +1,6 @@
 import React from "react";
+import Links from "../layout/Links";
 import Main from "../layout/Main";
-import { Link } from "@inertiajs/inertia-react";
 
 const Index = () => {
     return (
@@ -43,7 +43,11 @@ const Index = () => {
                             }}/>
                     </div>
                 </div>
-
+            </div>
+            <Links />
+            <div
+                id="about"
+                className="container">
                 {/* why section */}
                 <div
                     className="row align-items-center">
