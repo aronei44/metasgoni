@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
 import Links from "../layout/Links";
 import Main from "../layout/Main";
 
 const Index = () => {
+    const [show, setShow] = useState(false);
+    const [current, setCurrent] = useState({});
+    const [photos, setPhotos] = useState([
+        {
+            src : 'https://images.unsplash.com/photo-1654964150054-2686fe33c993?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80',
+            title : 'Photo 1',
+            description : 'This is a photo 1'
+        },
+        {
+            src : 'https://images.unsplash.com/photo-1652114067335-a0f7d8f9eeff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80',
+            title : 'Photo 2',
+            description : 'This is a photo 2'
+        },
+        {
+            src : 'https://images.unsplash.com/photo-1654757261706-dba230bdb467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
+            title : 'Photo 3',
+            description : 'This is a photo 3'
+        },
+        {
+            src : 'https://images.unsplash.com/photo-1654483143648-cb97703e2979?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80',
+            title : 'Photo 4',
+            description : 'This is a photo 4'
+        }
+    ])
     return (
         <Main>
            <div
@@ -47,7 +72,7 @@ const Index = () => {
             <Links />
             <div
                 id="about"
-                className="container">
+                className="container bg">
                 {/* why section */}
                 <div
                     className="row align-items-center">
@@ -172,6 +197,75 @@ const Index = () => {
                     </div>
                 </div>
             </div>
+            <Links />
+            <div
+                id="gallery"
+                className="container">
+                <h1>
+                    Galeri Pelanggan
+                </h1>
+                <div
+                    className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                    {photos.map((item, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={`mb-2 col`}>
+                                <img
+                                    src={item.src}
+                                    onClick={() => {
+                                        setShow(true)
+                                        setCurrent(item)
+                                    }}
+                                    className="img-fluid"
+                                    style={{
+                                        cursor: "zoom-in"
+                                    }}
+                                    alt="image gallery"/>
+                            </div>
+                        )}
+                    )}
+                </div>
+            </div>
+            <Modal
+                show={show}
+                onHide={() => setShow(false)}
+                centered={true}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                backdrop="static"
+                keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Galeri Pelanggan
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div
+                        className="container">
+                        <div
+                            className="row">
+                            <div
+                                className="col-md-6 bg-white shadow py-3 px-3">
+                                <img
+                                    src={current.src}
+                                    className="img-fluid"
+                                    alt="image gallery"/>
+                            </div>
+                            <div
+                                className="col-md-6 bg">
+                                <h3>
+                                    {current.title}
+                                </h3>
+                                <hr />
+                                <p>
+                                    {current.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </Main>
     )
 }

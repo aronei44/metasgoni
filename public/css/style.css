@@ -11,7 +11,7 @@ body {
     /* Firefox */
 }
 
-#about::before {
+.bg::before {
     content: "";
     display: block;
     position: absolute;
@@ -24,6 +24,6 @@ body {
     opacity: 0.1;
 }
 
-#about {
+.bg {
     position: relative;
 }
