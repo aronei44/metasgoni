@@ -11,4 +11,8 @@ class ViewController extends Controller
     {
         return Inertia::render('Index');
     }
+    public function profile()
+    {
+        return Inertia::render('Profile');
+    }
 }

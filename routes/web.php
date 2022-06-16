@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
+Route::get('/profiles', [ViewController::class, 'profile'])->name('profile');

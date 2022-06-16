@@ -38086,6 +38086,14 @@ var map = {
 	"./Index.jsx": [
 		"./resources/js/Components/Pages/Index.jsx",
 		"resources_js_Components_Pages_Index_jsx"
+	],
+	"./Profile": [
+		"./resources/js/Components/Pages/Profile.jsx",
+		"resources_js_Components_Pages_Profile_jsx"
+	],
+	"./Profile.jsx": [
+		"./resources/js/Components/Pages/Profile.jsx",
+		"resources_js_Components_Pages_Profile_jsx"
 	]
 };
 function webpackAsyncContext(req) {
@@ -38236,7 +38244,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_Components_Pages_Index_jsx") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Components_Pages_Index_jsx":1,"resources_js_Components_Pages_Profile_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
