@@ -1,12 +1,8 @@
+import { usePage } from "@inertiajs/inertia-react";
 import React, {useState} from "react";
 
 const Links = () => {
-    const [link, setLink] = useState({
-        shopee: "https://shopee.co.id",
-        lazada: "https://www.lazada.co.id",
-        blibli: "https://www.blibli.com",
-        tokopedia: "https://www.tokopedia.com",
-    });
+    const { link } = usePage().props
     return (
         <div
             className="my-5 py-3"

@@ -1,6 +1,7 @@
 import React from "react";
 import { Head, Link } from "@inertiajs/inertia-react";
 import Nav from "./Nav";
+import Footer from "./Footer";
 
 const Main = ({children}) => {
     return (
@@ -16,6 +17,7 @@ const Main = ({children}) => {
                 }}>
                 {children}
             </div>
+            <Footer />
         </>
     )
 }

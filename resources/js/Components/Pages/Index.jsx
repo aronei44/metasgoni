@@ -1,3 +1,4 @@
+import { usePage } from "@inertiajs/inertia-react";
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import Links from "../layout/Links";
@@ -6,28 +7,7 @@ import Main from "../layout/Main";
 const Index = () => {
     const [show, setShow] = useState(false);
     const [current, setCurrent] = useState({});
-    const [photos, setPhotos] = useState([
-        {
-            src : 'https://images.unsplash.com/photo-1654964150054-2686fe33c993?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80',
-            title : 'Photo 1',
-            description : 'This is a photo 1'
-        },
-        {
-            src : 'https://images.unsplash.com/photo-1652114067335-a0f7d8f9eeff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80',
-            title : 'Photo 2',
-            description : 'This is a photo 2'
-        },
-        {
-            src : 'https://images.unsplash.com/photo-1654757261706-dba230bdb467?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
-            title : 'Photo 3',
-            description : 'This is a photo 3'
-        },
-        {
-            src : 'https://images.unsplash.com/photo-1654483143648-cb97703e2979?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80',
-            title : 'Photo 4',
-            description : 'This is a photo 4'
-        }
-    ])
+    const { photos } = usePage().props;
     return (
         <Main>
            <div
