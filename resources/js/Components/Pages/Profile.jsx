@@ -1,5 +1,6 @@
 import React from "react";
 import Main from "../layout/Main";
+import Links from "../layout/Links";
 
 const Profile = () => {
     return (
@@ -49,6 +50,7 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            <Links />
             <div
                 className="container">
                 <div
@@ -168,6 +170,122 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            <Links />
+            <div
+                className="container bg">
+                <div
+                    className="row">
+                    <div
+                        className="col-md-6 text-center">
+                        <img
+                            src="/img/why.png"
+                            style={{
+                                height: "240px",
+                                width: "320px",
+                                margin: "40px",
+                                boxShadow: "-40px -40px #C6A079, 40px 40px #C6A079",
+                            }}
+                            alt=""/>
+                    </div>
+                    <div
+                        className="col-md-6">
+                        <h1>
+                            Fasilitas Produksi
+                        </h1>
+                        <ol
+                            className="">
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    9 set mesin konveksi
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    alat pemotong bahan
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    rumah produksi
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    rak stokis
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    armada operasional
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    admin / tim marketing
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    desain grafis
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    alat pemotong manual lainnya
+                                </span>
+                            </li>
+                            <li
+                                className="list-group-item d-flex align-items-center">
+                                <i className="bi bi-check-all text-success h2"/>
+                                <span className="text-capitalize">
+                                    ruangan  wifi
+                                </span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div
+                    className="row">
+                    <div
+                        className="col-md-6">
+                        <h1>
+                            Karyawan  / SDM
+                        </h1>
+                        <p>
+                            METASGONI merupakan usaha yang dirintis melalui pemberdayaan, karna sedikitnya yang bekerja di metasgoni  dipandu dalam menjahit memola, dsb
+                        </p>
+                        <p>
+                            para pekerja di metas goni terdiri dari 8 wanita dengan status sendiri sebagai tulang punggung keluarga hal ini yang memotivasi metasgoni agar dapat menghdupi para pekerja yang berjuang mencari nafkah di keluarganya.
+                        </p>
+                    </div>
+                    <div
+                        className="col-md-6">
+                        <h1>
+                            Kapasitas Produksi
+                        </h1>
+                        <p>
+                            adapun produktivitas yang dilakukan metasgoni ialah .1.500 Pcs / bulan. Namun hal ini tidak dijadikan acuan metas goni masih menampung pemesanan lebih dengan sdm yang tersedia dan siap dengan bekerja partime
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </Main>
     )
 }
