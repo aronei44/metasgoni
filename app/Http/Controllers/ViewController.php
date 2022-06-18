@@ -15,4 +15,8 @@ class ViewController extends Controller
     {
         return Inertia::render('Profile');
     }
+    public function product()
+    {
+        return Inertia::render('Product');
+    }
 }
