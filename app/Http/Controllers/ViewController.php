@@ -19,4 +19,8 @@ class ViewController extends Controller
     {
         return Inertia::render('Product');
     }
+    public function contact()
+    {
+        return Inertia::render('Contact');
+    }
 }
