@@ -21,3 +21,8 @@ Route::get('/products', [ViewController::class, 'product'])->name('product');
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 Route::get('/login', [ViewController::class,'login'])->name('login')->middleware('guest');
 Route::post('/login', [LogController::class,'login']);
+
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
+    Route::get('/', [AdminViewController::class,'index']);
+});
