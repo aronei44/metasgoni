@@ -19,3 +19,5 @@ Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/profiles', [ViewController::class, 'profile'])->name('profile');
 Route::get('/products', [ViewController::class, 'product'])->name('product');
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
+Route::get('/login', [ViewController::class,'login'])->name('login')->middleware('guest');
+Route::post('/login', [LogController::class,'login']);

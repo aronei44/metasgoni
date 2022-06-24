@@ -38095,6 +38095,14 @@ var map = {
 		"./resources/js/Components/Pages/Index.jsx",
 		"resources_js_Components_Pages_Index_jsx"
 	],
+	"./Login": [
+		"./resources/js/Components/Pages/Login.jsx",
+		"resources_js_Components_Pages_Login_jsx"
+	],
+	"./Login.jsx": [
+		"./resources/js/Components/Pages/Login.jsx",
+		"resources_js_Components_Pages_Login_jsx"
+	],
 	"./Product": [
 		"./resources/js/Components/Pages/Product.jsx",
 		"resources_js_Components_Pages_Product_jsx"
@@ -38260,7 +38268,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Components_Pages_Contact_jsx":1,"resources_js_Components_Pages_Index_jsx":1,"resources_js_Components_Pages_Product_jsx":1,"resources_js_Components_Pages_Profile_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Components_Pages_Contact_jsx":1,"resources_js_Components_Pages_Index_jsx":1,"resources_js_Components_Pages_Login_jsx":1,"resources_js_Components_Pages_Product_jsx":1,"resources_js_Components_Pages_Profile_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
