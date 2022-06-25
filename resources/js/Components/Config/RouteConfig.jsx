@@ -86,8 +86,8 @@ const RouteConfig = () => {
                                     <i className={item.logo} /> <span className="ms-1 d-none d-sm-inline">{item.display}</span>
                                 </a>
                                 <ul className="collapse show nav flex-column ms-1" id={`submenu${index}`} data-bs-parent="#menu">
-                                    {item.childs.map(it=>(
-                                        <li className="w-100">
+                                    {item.childs.map((it,i)=>(
+                                        <li className="w-100" key={i}>
                                             <Link href={prefix + it.path} className="nav-link px-0 text-white text-decoration-none"> <span className="d-none d-sm-inline">{it.display}</span></Link>
                                         </li>
                                     ))}

@@ -64,7 +64,8 @@ class HandleInertiaRequests extends Middleware
                 'lazada'=>"https://www.lazada.co.id",
                 'blibli'=>"https://www.blibli.com",
                 'tokopedia'=>"https://www.tokopedia.com",
-            ]
+            ],
+            'user'=> auth()->user(),
         ]);
     }
 }
