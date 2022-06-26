@@ -971,63 +971,69 @@ var Logo = function Logo(_ref) {
           }), " Tambah Logo"]
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_data_table_component__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      title: "List Logo",
-      pagination: true,
-      columns: [{
-        name: 'No',
-        selector: function selector(row, index) {
-          return index + 1;
-        }
-      }, {
-        name: 'Gambar',
-        selector: function selector(row) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-            src: row.url,
-            className: "img-thumbnail"
-          });
-        }
-      }, {
-        name: 'Layanan Penyedia',
-        selector: 'name',
-        sortable: true
-      }, {
-        name: 'action',
-        selector: function selector(row) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              className: "btn btn-primary me-2",
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#editModal",
-              onClick: function onClick() {
-                setName(row.name);
-                setId(row.id);
-                setLoading(false);
-              },
-              children: "Edit"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              className: "btn btn-danger",
-              onClick: function onClick() {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
-                  title: 'Are you sure?',
-                  text: "Data yang dihapus tidak dapat dikembalikan.",
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Hapus'
-                }).then(function (result) {
-                  if (result.isConfirmed) {
-                    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"]("/admin/merchant-logos/".concat(row.id));
-                  }
-                });
-              },
-              children: "Hapus"
-            })]
-          });
-        }
-      }],
-      data: logos
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "card shadow mt-2",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "card-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_data_table_component__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          title: "List Logo",
+          pagination: true,
+          columns: [{
+            name: 'No',
+            selector: function selector(row, index) {
+              return index + 1;
+            }
+          }, {
+            name: 'Gambar',
+            selector: function selector(row) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                src: row.url,
+                className: "img-thumbnail"
+              });
+            }
+          }, {
+            name: 'Layanan Penyedia',
+            selector: 'name',
+            sortable: true
+          }, {
+            name: 'action',
+            selector: function selector(row) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  className: "btn btn-primary me-2",
+                  "data-bs-toggle": "modal",
+                  "data-bs-target": "#editModal",
+                  onClick: function onClick() {
+                    setName(row.name);
+                    setId(row.id);
+                    setLoading(false);
+                  },
+                  children: "Edit"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  className: "btn btn-danger",
+                  onClick: function onClick() {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
+                      title: 'Are you sure?',
+                      text: "Data yang dihapus tidak dapat dikembalikan.",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Hapus'
+                    }).then(function (result) {
+                      if (result.isConfirmed) {
+                        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"]("/admin/merchant-logos/".concat(row.id));
+                      }
+                    });
+                  },
+                  children: "Hapus"
+                })]
+              });
+            }
+          }],
+          data: logos
+        })
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "modal fade",
       id: "createModal",

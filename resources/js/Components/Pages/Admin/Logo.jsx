@@ -18,59 +18,64 @@ const Logo = ({logos}) => {
                     </button>
                 </div>
             </div>
-            <DataTable
-                title= 'List Logo'
-                pagination={true}
-                columns={[
-                    {
-                        name: 'No',
-                        selector: (row, index)=> index+1
-                    },
-                    {
-                        name: 'Gambar',
-                        selector: row =>{
-                            return (
-                                <img src={row.url} className="img-thumbnail" />
-                            )
-                        }
-                    },
-                    {
-                        name: 'Layanan Penyedia',
-                        selector: 'name',
-                        sortable: true
-                    },
-                    {
-                        name: 'action',
-                        selector: row => {
-                            return(
-                                <>
-                                    <button className="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={()=>{
-                                        setName(row.name)
-                                        setId(row.id)
-                                        setLoading(false)
-                                    }}>Edit</button>
-                                    <button className="btn btn-danger" onClick={()=>{
-                                        Swal.fire({
-                                            title: 'Are you sure?',
-                                            text: "Data yang dihapus tidak dapat dikembalikan.",
-                                            icon: 'warning',
-                                            showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
-                                            confirmButtonText: 'Hapus'
-                                            }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                Inertia.delete(`/admin/merchant-logos/${row.id}`)
-                                            }
-                                        })
-                                    }}>Hapus</button>
-                                </>
-                            )
-                        }
-                    }
-                ]}
-                data={logos}
-            />
+            <div className="card shadow mt-2">
+                <div className="card-body">
+                    <DataTable
+                        title= 'List Logo'
+                        pagination={true}
+                        columns={[
+                            {
+                                name: 'No',
+                                selector: (row, index)=> index+1
+                            },
+                            {
+                                name: 'Gambar',
+                                selector: row =>{
+                                    return (
+                                        <img src={row.url} className="img-thumbnail" />
+                                    )
+                                }
+                            },
+                            {
+                                name: 'Layanan Penyedia',
+                                selector: 'name',
+                                sortable: true
+                            },
+                            {
+                                name: 'action',
+                                selector: row => {
+                                    return(
+                                        <>
+                                            <button className="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={()=>{
+                                                setName(row.name)
+                                                setId(row.id)
+                                                setLoading(false)
+                                            }}>Edit</button>
+                                            <button className="btn btn-danger" onClick={()=>{
+                                                Swal.fire({
+                                                    title: 'Are you sure?',
+                                                    text: "Data yang dihapus tidak dapat dikembalikan.",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'Hapus'
+                                                    }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        Inertia.delete(`/admin/merchant-logos/${row.id}`)
+                                                    }
+                                                })
+                                            }}>Hapus</button>
+                                        </>
+                                    )
+                                }
+                            }
+                        ]}
+                        data={logos}
+                    />
+
+                </div>
+            </div>
 
 
 
