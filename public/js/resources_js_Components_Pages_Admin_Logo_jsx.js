@@ -982,7 +982,8 @@ var Logo = function Logo(_ref) {
             name: 'No',
             selector: function selector(row, index) {
               return index + 1;
-            }
+            },
+            width: '50px'
           }, {
             name: 'Gambar',
             selector: function selector(row) {
@@ -1245,6 +1246,12 @@ var AdminLayout = function AdminLayout(_ref) {
         icon: 'error',
         title: 'Oops...',
         text: text
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          document.querySelectorAll('.btn-close').forEach(function (el) {
+            el.click();
+          });
+        }
       });
     }
 
@@ -1267,6 +1274,12 @@ var AdminLayout = function AdminLayout(_ref) {
         icon: 'error',
         title: 'Oops...',
         text: server
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          document.querySelectorAll('.btn-close').forEach(function (el) {
+            el.click();
+          });
+        }
       });
     }
   }, [errors, success, server]);

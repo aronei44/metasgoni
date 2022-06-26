@@ -25,8 +25,14 @@ Route::post('/login', [LogController::class,'login']);
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::get('/', [AdminViewController::class,'index']);
+
     Route::get('/merchant-logos', [AdminViewController::class,'logo']);
     Route::post('/merchant-logos', [AdminActionLogoController::class,'createLogo']);
     Route::put('/merchant-logos/{logo}', [AdminActionLogoController::class,'updateLogo']);
     Route::delete('/merchant-logos/{logo}', [AdminActionLogoController::class,'deleteLogo']);
+
+    Route::get('/merchant-links', [AdminViewController::class,'link']);
+    Route::post('/merchant-links', [AdminActionLinkController::class,'createLink']);
+    Route::put('/merchant-links/{link}', [AdminActionLinkController::class,'updateLink']);
+    Route::delete('/merchant-links/{link}', [AdminActionLinkController::class,'deleteLink']);
 });

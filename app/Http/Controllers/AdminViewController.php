@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
 use App\Models\Logo;
 use App\Models\User;
 use Inertia\Inertia;
@@ -19,6 +20,13 @@ class AdminViewController extends Controller
     {
         return Inertia::render('Admin/Logo',[
             'logos'=>Logo::all()
+        ]);
+    }
+    public function link()
+    {
+        return Inertia::render('Admin/Link',[
+            'logos'=>Logo::all(),
+            'links'=>Link::with('logo')->get()
         ]);
     }
 }

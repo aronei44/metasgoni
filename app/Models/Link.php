@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Logo extends Model
+class Link extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function links()
+    public function logo()
     {
-        return $this->hasMany(Link::class);
+        return $this->belongsTo(Logo::class);
     }
 }

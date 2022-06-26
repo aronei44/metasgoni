@@ -4,9 +4,10 @@ import { Inertia } from "@inertiajs/inertia";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
 
-const Logo = ({logos}) => {
-    const [name, setName] = useState('')
-    const [logo, setLogo] = useState('')
+const Link = ({logos, links}) => {
+    console.log(links)
+    const [link, setLink] = useState('')
+    const [logo, setLogo] = useState(0)
     const [id, setId] = useState(0)
     const [loading, setLoading] = useState(false)
     return(
@@ -14,7 +15,7 @@ const Logo = ({logos}) => {
             <div className="card shadow">
                 <div className="card-body d-flex justify-content-end">
                     <button className="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createModal" onClick={()=>setLoading(false)}>
-                        <i className="bi bi-plus"/> Tambah Logo
+                        <i className="bi bi-plus"/> Tambah Link
                     </button>
                 </div>
             </div>
@@ -30,16 +31,16 @@ const Logo = ({logos}) => {
                                 width:'50px'
                             },
                             {
-                                name: 'Gambar',
+                                name: 'Logo',
                                 selector: row =>{
                                     return (
-                                        <img src={row.url} className="img-thumbnail" />
+                                        <img src={row.logo.url} className="img-thumbnail" />
                                     )
                                 }
                             },
                             {
-                                name: 'Layanan Penyedia',
-                                selector: 'name',
+                                name: 'Link Toko',
+                                selector: 'link',
                                 sortable: true
                             },
                             {
@@ -47,8 +48,10 @@ const Logo = ({logos}) => {
                                 selector: row => {
                                     return(
                                         <>
+                                            <a className="btn btn-success text-white text-decoration-none me-2" href={row.link} target="_blank">Lihat</a>
                                             <button className="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={()=>{
-                                                setName(row.name)
+                                                setLink(row.link)
+                                                setLogo(row.logo_id)
                                                 setId(row.id)
                                                 setLoading(false)
                                             }}>Edit</button>
@@ -63,7 +66,7 @@ const Logo = ({logos}) => {
                                                     confirmButtonText: 'Hapus'
                                                     }).then((result) => {
                                                     if (result.isConfirmed) {
-                                                        Inertia.delete(`/admin/merchant-logos/${row.id}`)
+                                                        Inertia.delete(`/admin/merchant-links/${row.id}`)
                                                     }
                                                 })
                                             }}>Hapus</button>
@@ -72,7 +75,7 @@ const Logo = ({logos}) => {
                                 }
                             }
                         ]}
-                        data={logos}
+                        data={links}
                     />
 
                 </div>
@@ -84,30 +87,34 @@ const Logo = ({logos}) => {
 
 
             <div className="modal fade" id="createModal" tabIndex={-1} aria-labelledby="createModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
+                <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="createModalLabel">Tambah Logo</h5>
+                            <h5 className="modal-title" id="createModalLabel">Tambah Link</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                         </div>
                         <div className="modal-body">
-                            <div className="form-group">
-                                <label htmlFor="logo">Logo</label>
-                                <input className="form-control" id="logo" onChange={e=>setLogo(e.target.files[0])} type="file" placeholder="masukan gambar"/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="name">Nama Penyedia (tokopedia, shopee, dll)</label>
-                                <input className="form-control" id="name" value={name} onChange={e=>setName(e.target.value)} type="text" placeholder="Nama Online Shop"/>
-                            </div>
+                        <p>
+                            Pilih Logo
+                        </p>
+                        <div className="row">
+                            {logos.map((item, index)=>(
+                                <div className="col-md-3" onClick={()=>setLogo(item.id)}>
+                                    <img src={item.url} style={{height:'100px'}} className={`img-thumbnail ${logo === item.id ? 'border border-primary border-5':''}`} alt={item.fullname}/>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="link">Link Toko</label>
+                            <input type="text" className="form-control" value={link} onChange={e=>setLink(e.target.value)} placeholder="Masukan Link"/>
+                        </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" disabled={name === '' || loading || logo === ''} className="btn btn-primary" onClick={()=>{
-                                Inertia.post('/admin/merchant-logos', {
-                                    name,
+                            <button type="button" disabled={link === '' || loading || logo === 0} className="btn btn-primary" onClick={()=>{
+                                Inertia.post('/admin/merchant-links', {
+                                    link,
                                     logo
-                                }, {
-                                    forceFormData: true,
                                 })
                                 setLoading(true)
                             }}>{loading? 'Proses': 'Simpan'}</button>
@@ -116,34 +123,35 @@ const Logo = ({logos}) => {
                 </div>
             </div>
 
-
-
             <div className="modal fade" id="editModal" tabIndex={-1} aria-labelledby="editModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
+                <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="editModalLabel">Edit Logo</h5>
+                            <h5 className="modal-title" id="editModalLabel">Edit Link</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                         </div>
                         <div className="modal-body">
-                            <div className="form-group">
-                                <label htmlFor="logo">Logo (isi hanya jika ingin mengganti gambar)</label>
-                                <input className="form-control" id="logo" onChange={e=>setLogo(e.target.files[0])} type="file" placeholder="masukan gambar"/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="name">Nama Penyedia (tokopedia, shopee, dll)</label>
-                                <input className="form-control" id="name" value={name} onChange={e=>setName(e.target.value)} type="text" placeholder="Nama Online Shop"/>
-                            </div>
+                        <p>
+                            Pilih Logo
+                        </p>
+                        <div className="row">
+                            {logos.map((item, index)=>(
+                                <div className="col-md-3" onClick={()=>setLogo(item.id)}>
+                                    <img src={item.url} style={{height:'100px'}} className={`img-thumbnail ${logo === item.id ? 'border border-primary border-5':''}`} alt={item.fullname}/>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="link">Link Toko</label>
+                            <input type="text" className="form-control" value={link} onChange={e=>setLink(e.target.value)} placeholder="Masukan Link"/>
+                        </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" disabled={name === '' || loading || id === 0} className="btn btn-primary" onClick={()=>{
-                                Inertia.post('/admin/merchant-logos/'+id, {
-                                    _method:'put',
-                                    name,
+                            <button type="button" disabled={link === '' || loading || logo === 0} className="btn btn-primary" onClick={()=>{
+                                Inertia.put('/admin/merchant-links/'+id, {
+                                    link,
                                     logo
-                                }, {
-                                    forceFormData: true,
                                 })
                                 setLoading(true)
                             }}>{loading? 'Proses': 'Simpan'}</button>
@@ -155,4 +163,4 @@ const Logo = ({logos}) => {
         </AdminLayout>
     )
 }
-export default Logo
+export default Link

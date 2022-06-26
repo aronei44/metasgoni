@@ -17,6 +17,12 @@ const AdminLayout = ({children}) => {
                 icon: 'error',
                 title: 'Oops...',
                 text: text,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelectorAll('.btn-close').forEach(el=>{
+                        el.click()
+                    })
+                }
             })
         }
         if(success !== null){
@@ -37,6 +43,12 @@ const AdminLayout = ({children}) => {
                 icon: 'error',
                 title: 'Oops...',
                 text: server,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelectorAll('.btn-close').forEach(el=>{
+                        el.click()
+                    })
+                }
             })
         }
     }, [errors, success, server]);
