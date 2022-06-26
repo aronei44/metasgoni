@@ -1167,7 +1167,7 @@ var Link = function Link(_ref) {
                     className: "img-thumbnail ".concat(logo === item.id ? 'border border-primary border-5' : ''),
                     alt: item.fullname
                   })
-                });
+                }, index);
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "form-group",

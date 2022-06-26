@@ -2,8 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
+use App\Models\Link;
 use Inertia\Middleware;
+use Illuminate\Http\Request;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -68,6 +69,7 @@ class HandleInertiaRequests extends Middleware
             'user'=> auth()->user(),
             'success' => fn () => $request->session()->get('success'),
             'server' => fn () => $request->session()->get('server'),
+            'links'=>Link::with('logo')->get(),
         ]);
     }
 }

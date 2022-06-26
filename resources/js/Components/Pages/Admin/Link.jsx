@@ -136,7 +136,7 @@ const Link = ({logos, links}) => {
                         </p>
                         <div className="row">
                             {logos.map((item, index)=>(
-                                <div className="col-md-3" onClick={()=>setLogo(item.id)}>
+                                <div className="col-md-3" key={index} onClick={()=>setLogo(item.id)}>
                                     <img src={item.url} style={{height:'100px'}} className={`img-thumbnail ${logo === item.id ? 'border border-primary border-5':''}`} alt={item.fullname}/>
                                 </div>
                             ))}

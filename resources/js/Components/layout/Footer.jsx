@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { usePage } from "@inertiajs/inertia-react";
 
 const Footer = () => {
-    const { link } = usePage().props
-    const [links, setLinks] = useState([])
-    useEffect(()=>{
-        const temp = []
-        for(const key in link){
-            temp.push({
-                name: key,
-                link: link[key]
-            })
-        }
-        setLinks(temp)
-    }, [link])
+    const { links } = usePage().props
     return (
         <>
         <div
@@ -69,7 +58,7 @@ const Footer = () => {
                                         }}
                                         target={"_blank"}
                                         href={item.link}>
-                                        {item.name}
+                                        {item.logo.name}
                                     </a>
                                 </li>
                         )})}
