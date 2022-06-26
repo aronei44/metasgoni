@@ -55,6 +55,9 @@ class AdminActionLogoController extends Controller
     {
         try {
             Storage::disk('google')->delete($logo->filename);
+            foreach($logo->links as $link){
+                $link->delete();
+            }
             $logo->delete();
             return redirect()->back()->with('success', 'Logo Deleted');
         } catch (\Throwable $th) {
