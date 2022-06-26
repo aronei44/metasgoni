@@ -25,4 +25,8 @@ Route::post('/login', [LogController::class,'login']);
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::get('/', [AdminViewController::class,'index']);
+    Route::get('/merchant-logos', [AdminViewController::class,'logo']);
+    Route::post('/merchant-logos', [AdminActionLogoController::class,'createLogo']);
+    Route::put('/merchant-logos/{logo}', [AdminActionLogoController::class,'updateLogo']);
+    Route::delete('/merchant-logos/{logo}', [AdminActionLogoController::class,'deleteLogo']);
 });

@@ -66,6 +66,8 @@ class HandleInertiaRequests extends Middleware
                 'tokopedia'=>"https://www.tokopedia.com",
             ],
             'user'=> auth()->user(),
+            'success' => fn () => $request->session()->get('success'),
+            'server' => fn () => $request->session()->get('server'),
         ]);
     }
 }

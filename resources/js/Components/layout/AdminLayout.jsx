@@ -1,8 +1,46 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import RouteConfig from '../Config/RouteConfig';
 import AdminNav from './AdminNav';
+import { usePage } from '@inertiajs/inertia-react';
+import Swal from 'sweetalert2';
 
 const AdminLayout = ({children}) => {
+    const { errors, success, server } = usePage().props;
+
+    useEffect(() => {
+        if(Object.keys(errors).length > 0){
+            let text = '';
+            for(let key in errors){
+                text += `${key} : ${errors[key]} \n`;
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: text,
+            })
+        }
+        if(success !== null){
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: success,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelectorAll('.btn-close').forEach(el=>{
+                        el.click()
+                    })
+                }
+            })
+        }
+        if(server !== null){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: server,
+            })
+        }
+    }, [errors, success, server]);
+
     return (
         <div className="container-fluid">
             <div className="row flex-nowrap">
