@@ -35,4 +35,13 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::post('/merchant-links', [AdminActionLinkController::class,'createLink']);
     Route::put('/merchant-links/{link}', [AdminActionLinkController::class,'updateLink']);
     Route::delete('/merchant-links/{link}', [AdminActionLinkController::class,'deleteLink']);
+
+    Route::get('/products', [AdminViewController::class,'product']);
+    Route::post('/products', [AdminActionProductController::class,'createProduct']);
+    Route::post('/products-link/{product}', [AdminActionProductController::class,'createLinkProduct']);
+    Route::put('/products/{product}', [AdminActionProductController::class,'updateInfoProduct']);
+    Route::put('/products-photo/{product}', [AdminActionProductController::class,'updatePhotoProduct']);
+    Route::put('/products-link/{productLink}', [AdminActionProductController::class,'updateLinkProduct']);
+    Route::delete('/products-link/{productLink}', [AdminActionProductController::class,'deleteLinkProduct']);
+    Route::delete('/products/{product}', [AdminActionProductController::class,'deleteProduct']);
 });

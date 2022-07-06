@@ -5,7 +5,6 @@ import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
 
 const Link = ({logos, links}) => {
-    console.log(links)
     const [link, setLink] = useState('')
     const [logo, setLogo] = useState(0)
     const [id, setId] = useState(0)

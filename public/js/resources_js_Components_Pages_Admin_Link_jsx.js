@@ -934,7 +934,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Link = function Link(_ref) {
   var logos = _ref.logos,
       links = _ref.links;
-  console.log(links);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),

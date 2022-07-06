@@ -2,7 +2,7 @@ import { usePage } from "@inertiajs/inertia-react";
 import React from "react";
 import AdminLayout from "../../layout/AdminLayout";
 
-const Index = ({users}) => {
+const Index = ({users, merchants, products}) => {
     const { user } = usePage().props
     return (
         <AdminLayout>
@@ -26,7 +26,7 @@ const Index = ({users}) => {
                                 Jumlah Merchant
                             </h4>
                             <h1 className="text-end">
-                                6
+                                {merchants}
                             </h1>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ const Index = ({users}) => {
                                 Jumlah Produk
                             </h4>
                             <h1 className="text-end">
-                                6
+                                {products}
                             </h1>
                         </div>
                     </div>

@@ -27,9 +27,9 @@ const Index = () => {
                         <h1>
                             Metasgoni
                         </h1>
-                        <p>
+                        <h4>
                             Berbagai Tas Goni Dalam Negeri Berkualitas Ekspor.
-                        </p>
+                        </h4>
                         <a
                             href="#why"
                             className="btn btn-primary scroll-to">

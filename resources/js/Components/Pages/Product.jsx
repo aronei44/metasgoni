@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../layout/Main';
 
-const Products = () => {
+const Products = ({products}) => {
     return (
         <Main>
             <div
@@ -12,43 +12,39 @@ const Products = () => {
                     Produk Kami
                 </h1>
                 <div
-                    className="row">
-                    <div
-                        className="col-md-4">
+                    className="row my-2">
+                    {products.map((item, index)=>(
                         <div
-                            className="card shadow">
-                            <img
-                                src="/img/why.png"
-                                className="card-img-top"
-                                alt="products" />
+                            className="col-md-4" key={index}>
                             <div
-                                className="card-body">
-                                <h5
-                                    className="card-title">
-                                    Card title
-                                </h5>
-                                <p
-                                    className="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                                </p>
+                                className="card shadow">
+                                <img
+                                    src={item.url}
+                                    className="card-img-top"
+                                    alt={item.filename} />
+                                <div
+                                    className="card-body">
+                                    <h5
+                                        className="card-title">
+                                        {item.name}
+                                    </h5>
+                                    <p
+                                        className="card-text">
+                                        {item.description}
+                                    </p>
+                                </div>
+                                <ul
+                                    className="list-group list-group-flush">
+                                    {item.links.map((it, i)=>(
+                                        <li
+                                            className="list-group-item" index={i}>
+                                            <a href={it.url} target='_blanks' className='text-dark text-decoration-none'>{it.name} <i className='bi bi-arrow-right' /></a>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                            <ul
-                                className="list-group list-group-flush">
-                                <li
-                                    className="list-group-item">
-                                    An item
-                                </li>
-                                <li
-                                    className="list-group-item">
-                                    A second item
-                                </li>
-                                <li
-                                    className="list-group-item">
-                                    A third item
-                                </li>
-                            </ul>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </Main>
