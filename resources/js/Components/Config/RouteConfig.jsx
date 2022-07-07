@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from '@inertiajs/inertia-react'
+import { Link, usePage } from '@inertiajs/inertia-react'
 
 const RouteConfig = () => {
+    const { user } = usePage().props
     const prefix = '/admin/'
     const [route, setRoute] = useState([
         {
@@ -75,13 +76,13 @@ const RouteConfig = () => {
                 {route.map((item, index)=>(
                         <>
                         {item.level === 1 ? (
-                            <li className="nav-item" key={index}>
+                            <li className="nav-item" key={index} hidden={item.roles.indexOf(user.role) < 0}>
                                 <Link href={prefix + item.path} className="nav-link align-middle px-0 text-white text-decoration-none">
                                 <i className={item.logo} /> <span className="ms-1 d-none d-sm-inline">{item.display}</span>
                                 </Link>
                             </li>
                         ) : (
-                            <li  key={index}>
+                            <li  key={index} hidden={item.roles.indexOf(user.role) < 0}>
                                 <a href={`#submenu${index}`} data-bs-toggle="collapse" className="nav-link px-0 align-middle text-white text-decoration-none">
                                     <i className={item.logo} /> <span className="ms-1 d-none d-sm-inline">{item.display}</span>
                                 </a>

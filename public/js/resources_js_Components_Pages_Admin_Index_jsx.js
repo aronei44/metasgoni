@@ -33,6 +33,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var RouteConfig = function RouteConfig() {
+  var user = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.user;
   var prefix = '/admin/';
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
@@ -92,6 +93,7 @@ var RouteConfig = function RouteConfig() {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
           children: item.level === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
             className: "nav-item",
+            hidden: item.roles.indexOf(user.role) < 0,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
               href: prefix + item.path,
               className: "nav-link align-middle px-0 text-white text-decoration-none",
@@ -103,6 +105,7 @@ var RouteConfig = function RouteConfig() {
               })]
             })
           }, index) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            hidden: item.roles.indexOf(user.role) < 0,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
               href: "#submenu".concat(index),
               "data-bs-toggle": "collapse",

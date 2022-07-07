@@ -46,6 +46,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::delete('/products-link/{productLink}', [AdminActionProductController::class,'deleteLinkProduct']);
     Route::delete('/products/{product}', [AdminActionProductController::class,'deleteProduct']);
 
-    Route::get('/users', [AdminViewController::class,'user']);
-    Route::post('/users', [LogController::class,'addUser']);
+    Route::group(['middleware'=>'superadmin'], function(){
+        Route::get('/users', [AdminViewController::class,'user']);
+        Route::post('/users', [LogController::class,'addUser']);
+        Route::delete('/users/{user}', [LogController::class, 'deleteUser']);
+    });
 });

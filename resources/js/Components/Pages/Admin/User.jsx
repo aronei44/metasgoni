@@ -58,9 +58,6 @@ const Link = ({users}) => {
                                 selector: row => {
                                     return(
                                         <>
-                                            <button className="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={()=>{
-                                                setLoading(false)
-                                            }}>Edit</button>
                                             <button className="btn btn-danger" onClick={()=>{
                                                 Swal.fire({
                                                     title: 'Are you sure?',
@@ -72,7 +69,7 @@ const Link = ({users}) => {
                                                     confirmButtonText: 'Hapus'
                                                     }).then((result) => {
                                                     if (result.isConfirmed) {
-                                                        Inertia.delete(`/admin/merchant-links/${row.id}`)
+                                                        Inertia.delete(`/admin/users/${row.id}`)
                                                     }
                                                 })
                                             }}>Hapus</button>
@@ -132,43 +129,6 @@ const Link = ({users}) => {
                     </div>
                 </div>
             </div>
-
-            {/* <div className="modal fade" id="editModal" tabIndex={-1} aria-labelledby="editModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-xl">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="editModalLabel">Edit Link</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-                        </div>
-                        <div className="modal-body">
-                        <p>
-                            Pilih Logo
-                        </p>
-                        <div className="row">
-                            {logos.map((item, index)=>(
-                                <div className="col-md-3" key={index} onClick={()=>setLogo(item.id)}>
-                                    <img src={item.url} style={{height:'100px'}} className={`img-thumbnail ${logo === item.id ? 'border border-primary border-5':''}`} alt={item.fullname}/>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="link">Link Toko</label>
-                            <input type="text" className="form-control" value={link} onChange={e=>setLink(e.target.value)} placeholder="Masukan Link"/>
-                        </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" disabled={link === '' || loading || logo === 0} className="btn btn-primary" onClick={()=>{
-                                Inertia.put('/admin/merchant-links/'+id, {
-                                    link,
-                                    logo
-                                })
-                                setLoading(true)
-                            }}>{loading? 'Proses': 'Simpan'}</button>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
 
         </AdminLayout>
     )

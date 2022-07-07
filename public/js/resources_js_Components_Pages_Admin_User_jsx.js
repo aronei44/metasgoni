@@ -783,6 +783,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var RouteConfig = function RouteConfig() {
+  var user = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.user;
   var prefix = '/admin/';
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
@@ -842,6 +843,7 @@ var RouteConfig = function RouteConfig() {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
           children: item.level === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
             className: "nav-item",
+            hidden: item.roles.indexOf(user.role) < 0,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
               href: prefix + item.path,
               className: "nav-link align-middle px-0 text-white text-decoration-none",
@@ -853,6 +855,7 @@ var RouteConfig = function RouteConfig() {
               })]
             })
           }, index) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            hidden: item.roles.indexOf(user.role) < 0,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
               href: "#submenu".concat(index),
               "data-bs-toggle": "collapse",
@@ -1012,16 +1015,8 @@ var Link = function Link(_ref) {
           }, {
             name: 'action',
             selector: function selector(row) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                  className: "btn btn-primary me-2",
-                  "data-bs-toggle": "modal",
-                  "data-bs-target": "#editModal",
-                  onClick: function onClick() {
-                    setLoading(false);
-                  },
-                  children: "Edit"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                   className: "btn btn-danger",
                   onClick: function onClick() {
                     sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
@@ -1034,12 +1029,12 @@ var Link = function Link(_ref) {
                       confirmButtonText: 'Hapus'
                     }).then(function (result) {
                       if (result.isConfirmed) {
-                        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"]("/admin/merchant-links/".concat(row.id));
+                        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"]("/admin/users/".concat(row.id));
                       }
                     });
                   },
                   children: "Hapus"
-                })]
+                })
               });
             }
           }],

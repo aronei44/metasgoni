@@ -45,4 +45,17 @@ class LogController extends Controller
             return redirect()->back()->with('server', $th->getMessage());
         }
     }
+    public function deleteUser(User $user)
+    {
+        try{
+            if($user->role == 'superadmin'){
+                return redirect()->back()->with('server', "Superadmin Can't Deleted");
+            } else {
+                $user->delete();
+                return redirect()->back()->with('success', 'User Deleted');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('server', $th->getMessage());
+        }
+    }
 }
