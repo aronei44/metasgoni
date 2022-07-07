@@ -38,4 +38,10 @@ class AdminViewController extends Controller
             'products'=>Product::with('links')->get()
         ]);
     }
+    public function user()
+    {
+        return Inertia::render('Admin/User',[
+            'users'=>User::all()
+        ]);
+    }
 }

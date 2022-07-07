@@ -60,12 +60,6 @@ class HandleInertiaRequests extends Middleware
                     'description'=>'This is a photo 4'
                 ]
             ],
-            'link'=>[
-                'shopee'=>"https://shopee.co.id",
-                'lazada'=>"https://www.lazada.co.id",
-                'blibli'=>"https://www.blibli.com",
-                'tokopedia'=>"https://www.tokopedia.com",
-            ],
             'user'=> auth()->user(),
             'success' => fn () => $request->session()->get('success'),
             'server' => fn () => $request->session()->get('server'),

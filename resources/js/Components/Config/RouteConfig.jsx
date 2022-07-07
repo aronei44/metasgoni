@@ -59,7 +59,7 @@ const RouteConfig = () => {
         {
             display : 'User List',
             logo : 'fs-4 bi-people',
-            path : 'user',
+            path : 'users',
             roles : [
                 'superadmin'
             ],

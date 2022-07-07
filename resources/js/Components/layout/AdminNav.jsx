@@ -1,5 +1,6 @@
 import { usePage } from "@inertiajs/inertia-react";
 import React, { useEffect, useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 
 const AdminNav = () =>{
     const { user } = usePage().props
@@ -22,7 +23,7 @@ const AdminNav = () =>{
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav ms-auto">
                     <a className="nav-link" href="#">{time}</a>
-                    <a className="nav-link btn btn-danger rounded-pill text-white ms-3" href="#">Log Out</a>
+                    <a className="nav-link btn btn-danger rounded-pill text-white ms-3" href="#" onClick={()=>Inertia.post('/logout')}>Log Out</a>
                 </div>
                 </div>
             </div>

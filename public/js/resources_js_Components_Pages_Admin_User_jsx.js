@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_Pages_Admin_Link_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_Pages_Admin_User_jsx"],{
 
 /***/ "./node_modules/@emotion/is-prop-valid/dist/emotion-is-prop-valid.browser.esm.js":
 /*!***************************************************************************************!*\
@@ -892,9 +892,9 @@ var RouteConfig = function RouteConfig() {
 
 /***/ }),
 
-/***/ "./resources/js/Components/Pages/Admin/Link.jsx":
+/***/ "./resources/js/Components/Pages/Admin/User.jsx":
 /*!******************************************************!*\
-  !*** ./resources/js/Components/Pages/Admin/Link.jsx ***!
+  !*** ./resources/js/Components/Pages/Admin/User.jsx ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -910,6 +910,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -932,28 +938,34 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Link = function Link(_ref) {
-  var logos = _ref.logos,
-      links = _ref.links;
+  var users = _ref.users;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      link = _useState2[0],
-      setLink = _useState2[1];
+      loading = _useState2[0],
+      setLoading = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
-      logo = _useState4[0],
-      setLogo = _useState4[1];
+      hide = _useState4[0],
+      setHide = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    name: '',
+    email: '',
+    password: ''
+  }),
       _useState6 = _slicedToArray(_useState5, 2),
-      id = _useState6[0],
-      setId = _useState6[1];
+      data = _useState6[0],
+      setData = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      loading = _useState8[0],
-      setLoading = _useState8[1];
+  var validate = function validate() {
+    if (data.name.length < 8 || data.email === '' || data.password.length < 8) {
+      return false;
+    }
+
+    return true;
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_layout_AdminLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -969,7 +981,7 @@ var Link = function Link(_ref) {
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
             className: "bi bi-plus"
-          }), " Tambah Link"]
+          }), " Tambah User"]
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -986,34 +998,26 @@ var Link = function Link(_ref) {
             },
             width: '50px'
           }, {
-            name: 'Logo',
-            selector: function selector(row) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-                src: row.logo.url,
-                className: "img-thumbnail"
-              });
-            }
+            name: 'Nama',
+            selector: 'name',
+            sortable: true
           }, {
-            name: 'Link Toko',
-            selector: 'link',
+            name: 'Email',
+            selector: 'email',
+            sortable: true
+          }, {
+            name: 'Role',
+            selector: 'role',
             sortable: true
           }, {
             name: 'action',
             selector: function selector(row) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
-                  className: "btn btn-success text-white text-decoration-none me-2",
-                  href: row.link,
-                  target: "_blank",
-                  children: "Lihat"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                   className: "btn btn-primary me-2",
                   "data-bs-toggle": "modal",
                   "data-bs-target": "#editModal",
                   onClick: function onClick() {
-                    setLink(row.link);
-                    setLogo(row.logo_id);
-                    setId(row.id);
                     setLoading(false);
                   },
                   children: "Edit"
@@ -1039,7 +1043,7 @@ var Link = function Link(_ref) {
               });
             }
           }],
-          data: links
+          data: users
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -1049,7 +1053,7 @@ var Link = function Link(_ref) {
       "aria-labelledby": "createModalLabel",
       "aria-hidden": "true",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "modal-dialog modal-xl",
+        className: "modal-dialog",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "modal-content",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -1057,7 +1061,7 @@ var Link = function Link(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h5", {
               className: "modal-title",
               id: "createModalLabel",
-              children: "Tambah Link"
+              children: "Tambah User"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               type: "button",
               className: "btn-close",
@@ -1066,39 +1070,65 @@ var Link = function Link(_ref) {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "modal-body",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-              children: "Pilih Logo"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "row",
-              children: logos.map(function (item, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                  className: "col-md-3",
-                  onClick: function onClick() {
-                    return setLogo(item.id);
-                  },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-                    src: item.url,
-                    style: {
-                      height: '100px'
-                    },
-                    className: "img-thumbnail ".concat(logo === item.id ? 'border border-primary border-5' : ''),
-                    alt: item.fullname
-                  })
-                });
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                htmlFor: "link",
-                children: "Link Toko"
+                htmlFor: "nama",
+                children: "Nama"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
                 type: "text",
                 className: "form-control",
-                value: link,
                 onChange: function onChange(e) {
-                  return setLink(e.target.value);
+                  return setData(_objectSpread(_objectSpread({}, data), {}, {
+                    name: e.target.value
+                  }));
                 },
-                placeholder: "Masukan Link"
+                placeholder: "Masukan Nama Anda"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                htmlFor: "email",
+                children: "Email"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "email",
+                className: "form-control",
+                onChange: function onChange(e) {
+                  return setData(_objectSpread(_objectSpread({}, data), {}, {
+                    email: e.target.value
+                  }));
+                },
+                placeholder: "Masukan Email Anda"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                htmlFor: "password",
+                children: "Password"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "".concat(hide === true ? 'password' : 'text'),
+                className: "form-control",
+                onChange: function onChange(e) {
+                  return setData(_objectSpread(_objectSpread({}, data), {}, {
+                    password: e.target.value
+                  }));
+                },
+                placeholder: "Masukan Password Anda"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "form-check form-switch",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                className: "form-check-input",
+                onChange: function onChange(e) {
+                  return setHide(!hide);
+                },
+                type: "checkbox",
+                role: "switch",
+                id: "pwHide"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                className: "form-check-label",
+                htmlFor: "pwHide",
+                children: "Lihat Password"
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -1110,95 +1140,10 @@ var Link = function Link(_ref) {
               children: "Close"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               type: "button",
-              disabled: link === '' || loading || logo === 0,
+              disabled: loading || !validate(),
               className: "btn btn-primary",
               onClick: function onClick() {
-                _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/admin/merchant-links', {
-                  link: link,
-                  logo: logo
-                });
-                setLoading(true);
-              },
-              children: loading ? 'Proses' : 'Simpan'
-            })]
-          })]
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "modal fade",
-      id: "editModal",
-      tabIndex: -1,
-      "aria-labelledby": "editModalLabel",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "modal-dialog modal-xl",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "modal-content",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "modal-header",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h5", {
-              className: "modal-title",
-              id: "editModalLabel",
-              children: "Edit Link"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              type: "button",
-              className: "btn-close",
-              "data-bs-dismiss": "modal",
-              "aria-label": "Close"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "modal-body",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-              children: "Pilih Logo"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "row",
-              children: logos.map(function (item, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                  className: "col-md-3",
-                  onClick: function onClick() {
-                    return setLogo(item.id);
-                  },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-                    src: item.url,
-                    style: {
-                      height: '100px'
-                    },
-                    className: "img-thumbnail ".concat(logo === item.id ? 'border border-primary border-5' : ''),
-                    alt: item.fullname
-                  })
-                }, index);
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "form-group",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                htmlFor: "link",
-                children: "Link Toko"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                type: "text",
-                className: "form-control",
-                value: link,
-                onChange: function onChange(e) {
-                  return setLink(e.target.value);
-                },
-                placeholder: "Masukan Link"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "modal-footer",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              type: "button",
-              className: "btn btn-secondary",
-              "data-bs-dismiss": "modal",
-              children: "Close"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              type: "button",
-              disabled: link === '' || loading || logo === 0,
-              className: "btn btn-primary",
-              onClick: function onClick() {
-                _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.put('/admin/merchant-links/' + id, {
-                  link: link,
-                  logo: logo
-                });
+                _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/admin/users', data);
                 setLoading(true);
               },
               children: loading ? 'Proses' : 'Simpan'

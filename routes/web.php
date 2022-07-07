@@ -22,6 +22,7 @@ Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 Route::get('/login', [ViewController::class,'login'])->name('login')->middleware('guest');
 Route::post('/login', [LogController::class,'login']);
 
+Route::post('/logout', [LogController::class,'logOut'])->middleware('auth');
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::get('/', [AdminViewController::class,'index']);
@@ -44,4 +45,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::put('/products-link/{productLink}', [AdminActionProductController::class,'updateLinkProduct']);
     Route::delete('/products-link/{productLink}', [AdminActionProductController::class,'deleteLinkProduct']);
     Route::delete('/products/{product}', [AdminActionProductController::class,'deleteProduct']);
+
+    Route::get('/users', [AdminViewController::class,'user']);
+    Route::post('/users', [LogController::class,'addUser']);
 });
